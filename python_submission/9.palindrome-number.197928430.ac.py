@@ -9,16 +9,16 @@ class Solution(object):
         numlist = list()
         num = x
         rem = None
-        print num
+        print(num)
         while(num >= 10):
             numlist.append(num%10)
             num = num/10
         numlist.append(num)
-        print numlist
+        print(numlist)
 
         start = 0
         end = len(numlist)
-        for i in xrange(0, len(numlist)/2):
+        for i in range(0, int(len(numlist)/2)):
             if numlist[i] != numlist[end-1-i]:
                 return False
         return True

@@ -32,22 +32,31 @@ from collections import Counter
 def fruits_into_baskets(fruits):
     window_length = 0
     window_start = 0
+    fruit_dict = Counter(fruits)
+    if len(fruit_dict) <= 2:
+        return len(fruits)
+
     for window_end in range(len(fruits)):
-        fruit_dict = Counter(fruits[window_start:window_end])
+        fruit_dict = Counter(fruits[window_start:window_end+1])
+        print(fruit_dict)
         while len(fruit_dict) > 2:
+            print("inside: {0}".format(fruit_dict))
             left_fruit = fruits[window_start]
             fruit_dict[left_fruit] -= 1
             if fruit_dict[left_fruit] == 0:
                 del fruit_dict[left_fruit]
             window_start += 1
+        print("{0}, {1}, {2}".format(window_length, window_end, window_start))
         window_length = max(window_length, window_end - window_start + 1)
 
     return window_length
 
 
 def main():
-    print("Maximum number of fruits: " + str(fruits_into_baskets(['A', 'B', 'C', 'A', 'C'])))
-    print("Maximum number of fruits: " + str(fruits_into_baskets(['A', 'B', 'C', 'B', 'B', 'C'])))
+    # print("Maximum number of fruits: " + str(fruits_into_baskets(['A', 'B', 'C', 'A', 'C'])))
+    # print("Maximum number of fruits: " + str(fruits_into_baskets(['A', 'B', 'C', 'B', 'B', 'C'])))
+    print("Maximum number of fruits: " + str(fruits_into_baskets([3, 3, 3, 1, 2, 1, 1, 2, 3, 3, 4])))
+
 
 
 main()
