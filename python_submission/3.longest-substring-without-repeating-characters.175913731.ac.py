@@ -22,3 +22,4 @@ class Solution(object):
         return longest
     def does_string_has_non_repeating_chars(self, str):
         return len(str) == len(set(list(str)))
+

@@ -16,9 +16,6 @@ class Solution(object):
         numlist.append(num)
         print numlist
 
-        start = 0
-        end = len(numlist)
-        for i in xrange(0, len(numlist)/2):
-            if numlist[i] != numlist[end-1-i]:
-                return False
-        return True
+        if numlist[i] != numlist[end-1-i]:
+            return False
+    return True
